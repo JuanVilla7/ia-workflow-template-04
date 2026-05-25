@@ -1,18 +1,18 @@
 ---
 story: STORY-003
 prd: PRD-001-db-ai-analyst
-plan: .agents/plans/PRD-001-db-ai-analyst/STORY-003-secure-execution.plan.md
+plan: .agents/plans/PRD-001-db-ai-analyst/completed/STORY-003-secure-execution.plan.md
 epic_branch: epic/PRD-001-db-ai-analyst
-commit: PENDING
+commit: 75446cb
 status: COMPLETE
 completed: 2026-05-25
 ---
 
 # Implementation Report — STORY-003: Secure SQL Execution Tool with Self-Correction
 
-**Plan**: `.agents/plans/PRD-001-db-ai-analyst/STORY-003-secure-execution.plan.md`
+**Plan**: `.agents/plans/PRD-001-db-ai-analyst/completed/STORY-003-secure-execution.plan.md`
 **Epic Branch**: `epic/PRD-001-db-ai-analyst`
-**Commit**: `PENDING`
+**Commit**: `75446cb`
 
 ## Summary
 
