@@ -1,5 +1,6 @@
 import asyncio
 import anyio
+import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -9,22 +10,28 @@ from app.core.config import settings
 from app.core.database import Base, engine
 from app.core.middleware import LoggingMiddleware
 from app.routers import pais as pais_router
+from app.routers import agent as agent_router
+
+logger = logging.getLogger("api.main")
 
 async def init_db():
     # Helper to run blocking create_all in a thread
+    logger.info("Initializing database...")
     try:
         await anyio.to_thread.run_sync(Base.metadata.create_all, engine)
-    except Exception:
+        logger.info("Database initialized successfully.")
+    except Exception as e:
+        logger.error("Database initialization failed: %s", str(e))
         # DB might be offline, that's okay for startup
         pass
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Launch DB init as a background task so it doesn't block startup
+    logger.info("Starting lifespan...")
     asyncio.create_task(init_db())
     yield
-    # Shutdown logic if needed
-    # Shutdown logic if needed
+    logger.info("Stopping lifespan...")
 
 app = FastAPI(
     title=settings.app_name,
@@ -44,6 +51,7 @@ app.add_middleware(
 )
 
 app.include_router(pais_router.router, prefix="/api/v1")
+app.include_router(agent_router.router, prefix="/api/v1")
 
 
 @app.get("/health")
@@ -52,7 +60,8 @@ def health():
     try:
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
-    except Exception:
+    except Exception as e:
+        logger.error("Health check DB error: %s", str(e))
         db_status = "error"
     return {
         "status": "ok",

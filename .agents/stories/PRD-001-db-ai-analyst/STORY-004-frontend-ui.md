@@ -1,7 +1,9 @@
 ---
 id: STORY-004
 title: Frontend Chat Interface
-status: todo
+status: done
+plan: .agents/plans/PRD-001-db-ai-analyst/STORY-004-frontend-ui.plan.md
+updated: 2026-05-25
 epic_branch: epic/PRD-001-db-ai-analyst
 complexity: medium
 depends_on: [STORY-003]

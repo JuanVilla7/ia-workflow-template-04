@@ -1,3 +1,4 @@
+import os
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -9,6 +10,7 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/app_db"
     allowed_origins: str = "http://localhost:3000"
     log_level: str = "INFO"
+    openai_api_key: str | None = None
 
     @field_validator("allowed_origins", mode="before")
     @classmethod
@@ -26,3 +28,6 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+if settings.openai_api_key:
+    os.environ["OPENAI_API_KEY"] = settings.openai_api_key

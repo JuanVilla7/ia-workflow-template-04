@@ -10,6 +10,8 @@ export default function RootLayout() {
           <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>About</NavLink>
           {" | "}
           <NavLink to="/dashboard" className={({ isActive }) => isActive ? "active" : ""}>Dashboard</NavLink>
+          {" | "}
+          <NavLink to="/chat" className={({ isActive }) => isActive ? "active" : ""}>Chat</NavLink>
         </nav>
       </header>
       <main className="flex-1">
