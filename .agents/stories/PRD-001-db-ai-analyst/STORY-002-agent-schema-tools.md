@@ -1,11 +1,13 @@
 ---
 id: STORY-002
 title: Pydantic AI Agent with Schema Tools
-status: in-progress
+status: done
 epic_branch: epic/PRD-001-db-ai-analyst
 complexity: medium
 depends_on: [STORY-001]
-plan: .agents/plans/PRD-001-db-ai-analyst/STORY-002-agent-schema-tools.plan.md
+plan: .agents/plans/PRD-001-db-ai-analyst/completed/STORY-002-agent-schema-tools.plan.md
+report: .agents/reports/PRD-001-db-ai-analyst/STORY-002-agent-schema-tools.report.md
+commit: 21fdf3c
 updated: 2026-05-24
 ---
 
