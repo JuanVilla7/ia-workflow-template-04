@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     allowed_origins: str = "http://localhost:3000"
     log_level: str = "INFO"
     openai_api_key: str | None = None
+    openai_base_url: str = "https://openrouter.ai/api/v1"
+    agent_model: str = "openai:google/gemini-2.0-flash-exp:free"
 
     @field_validator("allowed_origins", mode="before")
     @classmethod
@@ -31,3 +33,5 @@ settings = Settings()
 
 if settings.openai_api_key:
     os.environ["OPENAI_API_KEY"] = settings.openai_api_key
+if settings.openai_base_url:
+    os.environ["OPENAI_BASE_URL"] = settings.openai_base_url

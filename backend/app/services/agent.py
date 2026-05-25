@@ -6,12 +6,13 @@ from pydantic_ai import Agent, ModelRetry, RunContext
 from sqlalchemy import inspect, text
 from sqlalchemy.orm import Session
 
+from app.core.config import settings
+
 logger = logging.getLogger("api.services.agent")
 
-# We'll use a placeholder model. In a real scenario, this would come from settings.
-# Pydantic AI expects 'provider:model-name'
+# Use model from settings
 agent = Agent(
-    "openai:gpt-4o",
+    settings.agent_model,
     deps_type=Session,
     instructions=(
         "You are a database analyst assistant. "
