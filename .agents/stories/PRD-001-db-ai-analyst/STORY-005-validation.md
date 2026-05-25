@@ -2,7 +2,9 @@
 id: STORY-005
 title: End-to-End Validation and Security Review
 status: done
-plan: .agents/plans/PRD-001-db-ai-analyst/STORY-005-validation.plan.md
+commit: 06b9035
+report: .agents/reports/PRD-001-db-ai-analyst/STORY-005-validation.report.md
+plan: .agents/plans/PRD-001-db-ai-analyst/completed/STORY-005-validation.plan.md
 updated: 2026-05-25
 epic_branch: epic/PRD-001-db-ai-analyst
 complexity: small

@@ -16,7 +16,7 @@ All stories commit on the epic branch `epic/PRD-001-db-ai-analyst`. No per-story
 | STORY-002 | Pydantic AI Agent with Schema Tools | done | [plan](../../plans/PRD-001-db-ai-analyst/completed/STORY-002-agent-schema-tools.plan.md) | 21fdf3c |
 | STORY-003 | Secure SQL Execution Tool with Self-Correction | done | [plan](../../plans/PRD-001-db-ai-analyst/completed/STORY-003-secure-execution.plan.md) | 75446cb |
 | STORY-004 | Frontend Chat Interface | done | [plan](../../plans/PRD-001-db-ai-analyst/completed/STORY-004-frontend-ui.plan.md) | - |
-| STORY-005 | End-to-End Validation and Security Review | done | [plan](../../plans/PRD-001-db-ai-analyst/STORY-005-validation.plan.md) | - |
+| STORY-005 | End-to-End Validation and Security Review | done | [plan](../../plans/PRD-001-db-ai-analyst/completed/STORY-005-validation.plan.md) | 06b9035 |
 
 ## Legend
 - `todo` — not started
