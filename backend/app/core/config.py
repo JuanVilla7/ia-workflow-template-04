@@ -10,8 +10,8 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/app_db"
     allowed_origins: str = "http://localhost:3000"
     log_level: str = "INFO"
-    openai_api_key: str | None = None
-    openai_base_url: str = "https://openrouter.ai/api/v1"
+    openrouter_api_key: str | None = None
+    openrouter_base_url: str = "https://openrouter.ai/api/v1"
     agent_model: str = "openai:google/gemini-2.0-flash-exp:free"
 
     @field_validator("allowed_origins", mode="before")
@@ -31,7 +31,7 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-if settings.openai_api_key:
-    os.environ["OPENAI_API_KEY"] = settings.openai_api_key
-if settings.openai_base_url:
-    os.environ["OPENAI_BASE_URL"] = settings.openai_base_url
+if settings.openrouter_api_key:
+    os.environ["OPENAI_API_KEY"] = settings.openrouter_api_key
+if settings.openrouter_base_url:
+    os.environ["OPENAI_BASE_URL"] = settings.openrouter_base_url

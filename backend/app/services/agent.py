@@ -42,7 +42,14 @@ def get_table_metadata(ctx: RunContext[Session], table_name: str) -> List[Dict[s
     """
     logger.debug("Tool call: get_table_metadata for table=%s", table_name)
     inspector = inspect(ctx.deps.get_bind())
-    return inspector.get_columns(table_name)
+    columns = inspector.get_columns(table_name)
+    
+    # Convert SQLAlchemy types to strings for JSON serialization
+    for col in columns:
+        if "type" in col:
+            col["type"] = str(col["type"])
+            
+    return columns
 
 
 @agent.tool(retries=2)
