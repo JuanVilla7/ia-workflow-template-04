@@ -1,10 +1,12 @@
 ---
 id: STORY-003
 title: Secure SQL Execution Tool with Self-Correction
-status: todo
+status: in-progress
 epic_branch: epic/PRD-001-db-ai-analyst
 complexity: medium
 depends_on: [STORY-002]
+plan: .agents/plans/PRD-001-db-ai-analyst/STORY-003-secure-execution.plan.md
+updated: 2026-05-25
 ---
 
 # STORY-003: Secure SQL Execution Tool with Self-Correction

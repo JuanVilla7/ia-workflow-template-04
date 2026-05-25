@@ -7,7 +7,8 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 import os
 os.environ["OPENAI_API_KEY"] = "dummy"
 
-from app.services.agent import agent, list_tables, get_table_metadata
+from app.services.agent import agent, list_tables, get_table_metadata, execute_query
+from pydantic_ai import ModelRetry
 
 class Base(DeclarativeBase):
     pass
@@ -47,3 +48,32 @@ async def test_agent_initialization():
     # Verify agent is initialized with correct types
     assert agent.deps_type == Session
     assert agent is not None
+
+def test_execute_query_success(db_session: Session):
+    from pydantic_ai import RunContext
+    # Insert dummy data
+    db_session.add(DbTestTable(id=1, name="Test Item"))
+    db_session.commit()
+    
+    ctx = RunContext(deps=db_session, model=TestModel(), usage=None, prompt="test")
+    
+    results = execute_query(ctx, "SELECT * FROM db_test_table")
+    assert len(results) == 1
+    assert results[0]["name"] == "Test Item"
+
+def test_execute_query_invalid_statement(db_session: Session):
+    from pydantic_ai import RunContext
+    ctx = RunContext(deps=db_session, model=TestModel(), usage=None, prompt="test")
+    
+    with pytest.raises(ModelRetry) as exc_info:
+        execute_query(ctx, "DROP TABLE db_test_table")
+    assert "Only SELECT queries are allowed" in str(exc_info.value)
+
+def test_execute_query_db_error(db_session: Session):
+    from pydantic_ai import RunContext
+    ctx = RunContext(deps=db_session, model=TestModel(), usage=None, prompt="test")
+    
+    with pytest.raises(ModelRetry) as exc_info:
+        # Querying a non-existent table
+        execute_query(ctx, "SELECT * FROM non_existent_table")
+    assert "Database error" in str(exc_info.value)
