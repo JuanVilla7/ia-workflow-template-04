@@ -12,7 +12,7 @@ All stories commit on the epic branch `epic/PRD-001-db-ai-analyst`. No per-story
 
 | ID | Title | Status | Plan | Commit |
 |----|-------|--------|------|--------|
-| STORY-001 | Backend Foundation and Database Connection | in-progress | [plan](../../plans/PRD-001-db-ai-analyst/STORY-001-backend-foundation.plan.md) | - |
+| STORY-001 | Backend Foundation and Database Connection | done | [plan](../../plans/PRD-001-db-ai-analyst/completed/STORY-001-backend-foundation.plan.md) | [7d69b15](https://github.com/TODO/commit/7d69b15) |
 | STORY-002 | Pydantic AI Agent with Schema Tools | todo | - | - |
 | STORY-003 | Secure SQL Execution Tool with Self-Correction | todo | - | - |
 | STORY-004 | Frontend Chat Interface | todo | - | - |

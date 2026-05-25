@@ -1,11 +1,13 @@
 ---
 id: STORY-001
 title: Backend Foundation and Database Connection
-status: in-progress
+status: done
 epic_branch: epic/PRD-001-db-ai-analyst
 complexity: small
 depends_on: []
-plan: .agents/plans/PRD-001-db-ai-analyst/STORY-001-backend-foundation.plan.md
+plan: .agents/plans/PRD-001-db-ai-analyst/completed/STORY-001-backend-foundation.plan.md
+report: .agents/reports/PRD-001-db-ai-analyst/STORY-001-backend-foundation.report.md
+commit: 7d69b15
 updated: 2026-05-24
 ---
 
