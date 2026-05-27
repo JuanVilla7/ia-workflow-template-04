@@ -5,6 +5,7 @@ class PaisBase(BaseModel):
     nombre: str
     codigo_iso: str
     activo: bool = True
+    continente_id: int | None = None
 
     @field_validator("nombre")
     @classmethod
@@ -35,6 +36,7 @@ class PaisUpdate(BaseModel):
     nombre: str | None = None
     codigo_iso: str | None = None
     activo: bool | None = None
+    continente_id: int | None = None
 
     @field_validator("nombre")
     @classmethod

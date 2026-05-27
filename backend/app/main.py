@@ -11,6 +11,8 @@ from app.core.database import Base, engine
 from app.core.middleware import LoggingMiddleware
 from app.routers import pais as pais_router
 from app.routers import agent as agent_router
+from app.routers import continente as continente_router
+from app.routers import poblacion as poblacion_router
 
 logger = logging.getLogger("api.main")
 
@@ -52,6 +54,8 @@ app.add_middleware(
 
 app.include_router(pais_router.router, prefix="/api/v1")
 app.include_router(agent_router.router, prefix="/api/v1")
+app.include_router(continente_router.router, prefix="/api/v1")
+app.include_router(poblacion_router.router, prefix="/api/v1")
 
 
 @app.get("/health")
